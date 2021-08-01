@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gs-acad-frontend
+  labels:
+    webapp: gs-acad-frontend
+spec:
+  containers:
+    - name: gs-acad-webapp
+      image: sdharamkar14/gs-acad:release0
+      ports:
+        - containerPort: 80

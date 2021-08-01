@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: gs-acad-rc
+  labels:
+    webapp: gs-acad-frontend-rc
+spec:
+  replicas: 4
+  # It will create the pods with desired no of replicas w/o selector field
+  selector:
+    webapp: gs-acad-frontend
+  template:
+    metadata:
+      name: gs-acad-frontend
+      labels:
+        webapp: gs-acad-frontend
+    spec:
+      containers:
+        - name: gs-acad-frontend
+          image: sdharamkar14/gs-acad:release0
+          ports:
+            - containerPort: 80

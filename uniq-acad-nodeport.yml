@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gs-acad-web-service
+spec:
+  type: ClusterIP
+  selector:
+    webapp: gs-acad-frontend
+  ports:
+    - port: 3000
+      targetPort: 80
+      # nodePort: 31515

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: webapp-replicaset
+  labels:
+    webapp: gs-acad-frontend-replica
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      webapp: gs-acad-frontend
+  template:
+    metadata:
+      name: gs-acad-frontend
+      labels:
+        webapp: gs-acad-frontend
+    spec:
+      containers:
+        - name: gs-acad-client
+          image: sdharamkar14/gs-acad:release0
+          ports:
+            - containerPort: 80

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gs-acad-deployment
+spec:
+  replicas: 3
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      webapp: gs-acad-frontend
+  template:
+    metadata:
+      labels:
+        webapp: gs-acad-frontend
+    spec:
+      containers:
+        - name: gs-acad-frontend
+          image: sdharamkar14/gs-acad:release1
+          ports:
+            - containerPort: 80
